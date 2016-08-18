@@ -1,0 +1,17 @@
+Package: FARM
+Type: Package
+Title: A package that tells you how farm spread
+Version: 1.0
+Date: 2016-08-18
+Author: Bruno Vilela,
+        Ty Tuff,
+        Carlos Botero
+Maintainer: Bruno Vilela <bvilela@wustl.edu>
+Description: Series of functions used for the human simulation project.
+License: GPL (>= 2)
+Imports:
+    Rcpp (>= 0.12.6),
+    ape,
+    msm
+LinkingTo: Rcpp
+RoxygenNote: 5.0.1
