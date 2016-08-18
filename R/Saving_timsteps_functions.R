@@ -99,7 +99,7 @@ RunSim2 <- function(myWorld, P.extinction, P.speciation,
       myWorld[, 8] <- paste0("t", myWorld[, 8])
       mytree <- makePhy(input[[7]])
       myOut <- list('mytree' = mytree, 'myWorld' = myWorld)
-      save(myOut, file= paste0(folder,"/", N.steps, ".Rdata"))
+      save(myOut, file= paste0(folder,"/", steps, ".Rdata"))
     }
   }
   # Trunsform the input/output into the final result and return it
