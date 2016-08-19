@@ -66,7 +66,7 @@ RunSim2 <- function(myWorld, P.extinction, P.speciation,
 
   mytree <- TheOriginOfSpecies(world.size, start) # Empty tree
   myT <- 0 # Time starts at zero
-
+  saveI <- seq(1, N.steps, resolution)
   # Common input and output for all the internal modules
   input <- list(P.speciation, P.Arisal, P.diffusion, P.extinction, P.TakeOver,
                 myWorld, mytree, myT, multiplier, nbs, independent)
@@ -75,10 +75,10 @@ RunSim2 <- function(myWorld, P.extinction, P.speciation,
   rand_order_func_run <- list("Extinction", "Diffusion", "SpeciationTakeOver", "Arisal")
 
   cat("0% [") # Time count
-
+  timesI <- round((N.steps / 10))
   for (steps in 1:N.steps) { # Starts the loop with 'n' steps
 
-    if (steps %% round((N.steps / 10)) == 0) { # Time count
+    if (steps %% timesI == 0) { # Time count
       cat('-') # Time count
     }# Time count
     if (steps == N.steps) { # Time count
@@ -94,12 +94,12 @@ RunSim2 <- function(myWorld, P.extinction, P.speciation,
     input <- do.call(rand_order[[4]], list(input = input))
 
     # Save
-    if(steps %% resolution == 0) {
+    if(steps %in% saveI) {
       myWorld <- as.data.frame(input[[6]])
       myWorld[, 8] <- paste0("t", myWorld[, 8])
       mytree <- makePhy(input[[7]])
       myOut <- list('mytree' = mytree, 'myWorld' = myWorld)
-      save(myOut, file= paste0(folder,"/", steps, ".Rdata"))
+      save(myOut, file= paste0(folder,"/", formatC(steps, 10, flag = 0), ".Rdata"))
     }
   }
   # Trunsform the input/output into the final result and return it
