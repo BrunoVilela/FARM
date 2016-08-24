@@ -12,7 +12,12 @@ License: GPL (>= 2)
 Imports:
     Rcpp (>= 0.12.6),
     ape,
-    msm
+    msm,
+    phytools,
+    caper,
+    diversitree,
+    picante
+Depends: R (>= 2.10)
 LinkingTo: Rcpp
 RoxygenNote: 5.0.1
 LazyData: true
