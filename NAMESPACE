@@ -2,10 +2,10 @@
 
 export(Arisal)
 export(BuildWorld)
-export(D)
 export(Diffusion)
 export(DivDep)
 export(DropTip)
+export(Dsig)
 export(Extinction)
 export(Module_2)
 export(NewTip)

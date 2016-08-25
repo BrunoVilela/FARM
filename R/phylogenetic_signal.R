@@ -1,5 +1,5 @@
 # Phylogenetic signal
-D <- function(mytree, myWorld) {
+Dsig <- function(mytree, myWorld) {
   traits <- data.frame("trait" = myWorld[, 6],
                        "tips" = myWorld[, 8])
   compdata <- comparative.data(mytree, traits, tips)

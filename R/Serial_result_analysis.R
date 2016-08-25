@@ -109,7 +109,7 @@ this_world <- Module_1_output$myWorld
 
 
   ## Phylogenetic signal (D)
-  Phylogenetic_signal <- D( mytree = this_tree, myWorld = this_world)
+  Phylogenetic_signal <- Dsig(mytree = this_tree, myWorld = this_world)
 
 
 
