@@ -71,5 +71,6 @@ RunSim <- function(myWorld, P.extinction, P.speciation,
   myWorld <- as.data.frame(input[[6]])
   myWorld[, 8] <- paste0("t", myWorld[, 8])
   mytree <- makePhy(input[[7]])
+  mytree$edge.length <- mytree$edge.length / N.steps
   return(list('mytree' = mytree, 'myWorld' = myWorld))
 }

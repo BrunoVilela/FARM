@@ -12,7 +12,6 @@ Module_2 <- function(Module_1_output) {
   } else {
 
     this_tree <- Module_1_output$mytree
-    this_tree$edge.length <- this_tree$edge.length/max(this_tree$edge.length)
     this_world <- Module_1_output$myWorld
 
 
