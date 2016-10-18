@@ -16,7 +16,8 @@ Imports:
     phytools,
     caper,
     diversitree,
-    picante
+    picante,
+    spdep
 Depends: R (>= 2.10)
 LinkingTo: Rcpp
 RoxygenNote: 5.0.1
