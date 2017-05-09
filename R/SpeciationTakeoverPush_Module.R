@@ -1,5 +1,5 @@
 # Speciation function!
-SpeciationTakeOver <- function(input) {
+SpeciationTakeOver.push <- function(input) {
   P.speciation <- input[[1]]
   P.Arisal <- input[[2]]
   P.diffusion <- input[[3]]
@@ -41,9 +41,9 @@ SpeciationTakeOver <- function(input) {
 
       # If yes go to take over
       if (emptyORtakeover & sum(P.TakeOver) != 0) {
-        temp <- TakeOver(myWorld, mytree, P.TakeOver,
-                         myT, multiplier = multiplier,
-                         i, BL, independent, nbs)
+        temp <- TakeOver.push(myWorld, mytree, P.TakeOver,
+                              myT, multiplier = multiplier,
+                              i, BL, independent, nbs)
         mytree <- temp$mytree
         myWorld <- temp$myWorld
         extinct.list <- c(extinct.list, temp$extinct.list)

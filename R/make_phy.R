@@ -2,8 +2,8 @@
 #'@param edge A matrix generated from the other functions
 #'@export
 makePhy <- function(edge) {
-  #target0 <- which(edge[, 1] == edge[1, 2])
-  #edge[target0, 4] <- edge[target0, 4] + edge[1, 4]
+  # target0 <- which(edge[, 1] == edge[1, 2])
+  # edge[target0, 4] <- edge[target0, 4] + edge[1, 4]
   edge <- edge[-1, ]
 
   edge2 <- edge[!is.na(edge[, 1]), ]
@@ -16,7 +16,7 @@ makePhy <- function(edge) {
   nodes <- unique(Edge[, 1]) # including the root
   newnodes <- (Ntips + 1):(Ntips + Nnodes)
   for (i in 1:(Nnodes + 1)) {
-    Edge2[Edge == nodes[i]] <- newnodes [i]
+    Edge2[Edge == nodes[i]] <- newnodes[i]
   }
 
   labels <- paste0("t", na.omit(edge2[, 3]))
@@ -27,4 +27,5 @@ makePhy <- function(edge) {
                              class = "phylo")
   mytree <- reorder.phylo(mytree, order = "cladewise")
   return(mytree)
+  return(edge)
 }

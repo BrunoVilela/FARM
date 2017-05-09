@@ -12,4 +12,3 @@ makePhy(edge)
 \description{
 Transform into a matrix
 }
-

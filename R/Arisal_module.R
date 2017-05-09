@@ -15,8 +15,10 @@ Arisal <- function(input) {
   multiplier <- input[[9]]
   nbs <- input[[10]]
   independent <- input[[11]]
-  fullworld <- table(myWorld[, 6], exclude = F)
-  if((fullworld[1]/sum(fullworld)) > 0.8 | any(myWorld[, 6] == 2)) {
+  fullworld <- table(myWorld[, 6], exclude = FALSE)
+  # Arisal only starts to occur if the world has 80% of occupancy
+  if((fullworld[1] / sum(fullworld)) > 0.8 |
+     any(myWorld[, 6] == 2, na.rm = TRUE)) {
     trait.nonNA <- !is.na(myWorld[, 6])
     trait.length <- sum(trait.nonNA)
     prob.ar <- numeric(trait.length)

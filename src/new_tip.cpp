@@ -17,7 +17,7 @@ NumericMatrix NewTip(NumericMatrix x, int parent, int child, double branch) {
   NumericMatrix::Column z = x(_, 0);
   int pos = 0;
   for(int i = 0; i < nrow; i++) {
-    if(!(z[i] > -1)) {
+    if(NumericVector::is_na(z[i])) {
       pos = i;
       break;
     }
@@ -26,7 +26,7 @@ NumericMatrix NewTip(NumericMatrix x, int parent, int child, double branch) {
   NumericMatrix::Column y = x(_, 2);
   LogicalVector mY = y == parent;
   for(int i = 0; i < nrow; i++) {
-    if(y[i] > -1) {
+    if(!NumericVector::is_na(y[i])) {
       if(mY[i]) {
         father = i;
         break;

@@ -1,7 +1,7 @@
 # Takeover function
-TakeOver <- function(myWorld, mytree, P.TakeOver,
-                     myT, multiplier = 1.3,
-                     i, BL, independent, nbs) {
+TakeOver.push <- function(myWorld, mytree, P.TakeOver,
+                          myT, multiplier = 1.3,
+                          i, BL, independent, nbs) {
 
   ind <- independent < runif(1)
   extinct.list <- NULL
@@ -49,8 +49,8 @@ TakeOver <- function(myWorld, mytree, P.TakeOver,
     test <- prob.to > runif(1)
     if (test) {
       extinct.list <- PosTargets
-      temp <- sub.TakeOver(mytree, index.tips = PosTargets,
-                           myWorld, myT, i, BL)
+      temp <- sub.TakeOver.push(mytree, index.tips = PosTargets,
+                                myWorld, myT, i, BL, nbs)
       mytree <- temp$mytree
       myWorld <- temp$myWorld
     }
@@ -62,9 +62,26 @@ TakeOver <- function(myWorld, mytree, P.TakeOver,
 
 
 #==================================================================
-sub.TakeOver <- function(mytree, index.tips, myWorld, myT,
-                         i, BL) { #index.tips = PosTargets
+sub.TakeOver.push <- function(mytree, index.tips, myWorld, myT,
+                              i, BL, nbs) { #index.tips = PosTargets
   # eliminate any record of the society that used to occupy the chosen spot
+  PosTargets.run <- getTargets(index.tips, myWorld, nbs, empty = TRUE)
+  if (!is.null(PosTargets.run)) {
+    if (length(PosTargets.run) > 1) {
+      if (myWorld[index.tips, 6] == 2) {
+        home <- myWorld[PosTargets.run, 7] == 2
+        if (any(home)) {
+          PosTargets.run <- PosTargets.run[home]
+        }
+      }
+    }
+    temp <- speciate(myT = myT, Parent = index.tips, PosTargets.run,
+                     myWorld = myWorld, mytree = mytree,
+                     0)
+    mytree <- temp$mytree
+    myWorld <- temp$myWorld
+  }
+
   temp <- extinct(mytree, index.tips, myWorld)
   mytree <- temp$mytree
   myWorld <- temp$myWorld

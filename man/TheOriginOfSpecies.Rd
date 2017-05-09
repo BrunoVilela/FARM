@@ -14,4 +14,3 @@ TheOriginOfSpecies(size, start)
 \description{
 Create a phylogeny
 }
-

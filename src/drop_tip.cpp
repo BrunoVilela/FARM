@@ -55,7 +55,7 @@ NumericVector DropTip(NumericMatrix x, NumericVector extinct) {
   int y = -1;
   NumericVector pos2(nrow);
   for(int i = 0; i < nrow; i++) {
-    if(w3[i] > -1) {
+    if(!NumericVector::is_na(w3[i])) {
       y += 1;
       pos2[y] = i;
     }
