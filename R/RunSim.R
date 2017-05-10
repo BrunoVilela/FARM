@@ -13,7 +13,7 @@
 #==================================================================
 RunSim <- function(myWorld, P.extinction, P.speciation,
                    P.diffusion, P.Arisal, P.TakeOver, nbs, independent,
-                   N.steps, multiplier, start = NULL) {
+                   N.steps, multiplier, start) {
   # myWorld = The hexagonal world created with the function BuildWorld
   # P.extinction = Probability matrix of extinction
   # P.speciation = Probability matrix of speciation
