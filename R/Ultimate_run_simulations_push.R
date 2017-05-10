@@ -7,7 +7,7 @@ RunSimUltimate.push <- function(myWorld, P.extinction, P.speciation,
   result <- try(RunSim.push(myWorld, P.extinction, P.speciation,
                             P.diffusion, P.Arisal, P.TakeOver, nbs,
                             independent, N.steps,
-                            multiplier), silent = silent, start = start)
+                            multiplier, start = start), silent = silent)
   if (class(result) == "try-error") {
     result <- NA
   }
