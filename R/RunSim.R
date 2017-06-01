@@ -7,7 +7,7 @@
 # extinction are determined by the match between the state of a binary trait and the
 # environment a societuy occupies).
 #
-# 7 Jun 2016
+# 7 Jun 2016.
 # Carlos A. Botero, Bruno Vilela & Ty Tuff
 # Washington University in Saint Louis
 #==================================================================
