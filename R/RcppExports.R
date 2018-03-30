@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 DropTip <- function(x, extinct) {
-    .Call('FARM_DropTip', PACKAGE = 'FARM', x, extinct)
+    .Call('_FARM_DropTip', PACKAGE = 'FARM', x, extinct)
 }
 
 NewTip <- function(x, parent, child, branch) {
-    .Call('FARM_NewTip', PACKAGE = 'FARM', x, parent, child, branch)
+    .Call('_FARM_NewTip', PACKAGE = 'FARM', x, parent, child, branch)
 }
 

@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // DropTip
 NumericVector DropTip(NumericMatrix x, NumericVector extinct);
-RcppExport SEXP FARM_DropTip(SEXP xSEXP, SEXP extinctSEXP) {
+RcppExport SEXP _FARM_DropTip(SEXP xSEXP, SEXP extinctSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,7 +19,7 @@ END_RCPP
 }
 // NewTip
 NumericMatrix NewTip(NumericMatrix x, int parent, int child, double branch);
-RcppExport SEXP FARM_NewTip(SEXP xSEXP, SEXP parentSEXP, SEXP childSEXP, SEXP branchSEXP) {
+RcppExport SEXP _FARM_NewTip(SEXP xSEXP, SEXP parentSEXP, SEXP childSEXP, SEXP branchSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -30,4 +30,15 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(NewTip(x, parent, child, branch));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_FARM_DropTip", (DL_FUNC) &_FARM_DropTip, 2},
+    {"_FARM_NewTip", (DL_FUNC) &_FARM_NewTip, 4},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_FARM(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
