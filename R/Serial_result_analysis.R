@@ -13,7 +13,7 @@ Module_2 <- function(Module_1_output) {
 
     this_tree <- Module_1_output$mytree
     this_tree$edge.length <-
-      this_tree$edge.length/max(phytools::nodeHeights(this_tree)[,2]) * scale
+      this_tree$edge.length/max(phytools::nodeHeights(this_tree)[, 2])
 
     this_world <- Module_1_output$myWorld
 
