@@ -14,7 +14,7 @@ DivDep <- function(mytree, myWorld) {
   }
   if (any(class(fit.musse) == "try-error")) {
     return(rep(NA, 6))
-  } else{
+  } else {
     return(fit.musse$par)
   }
 }
