@@ -12,8 +12,9 @@ Module_2 <- function(Module_1_output) {
   } else {
 
     this_tree <- Module_1_output$mytree
+    # Standardize the tree size to 1
     this_tree$edge.length <-
-      this_tree$edge.length/max(phytools::nodeHeights(this_tree)[, 2])
+      this_tree$edge.length / max(phytools::nodeHeights(this_tree)[, 2])
 
     this_world <- Module_1_output$myWorld
 
@@ -42,20 +43,20 @@ Module_2 <- function(Module_1_output) {
     # 2b) Pairwise distance -- Sum of pairwise distances
 
     # F -- Extensive quadratic entropy
-    F_quadratic_entropy_is_sum_of_PD <- sum(Pairwise_dist)
+    F_quadratic_entropy_is_sum_of_PD <- sum(as.vector(as.dist(Pairwise_dist)))
 
     #Mean inter-species distances
 
     # Anchor test = MPD (mean pairwise distance)
 
-    Mean_pairwise_distance <- mean(Pairwise_dist)
+    Mean_pairwise_distance <- mean(as.vector(as.dist(Pairwise_dist)))
 
     cat("-")
     #Pairwise distance/all distances -- Variance of pairwise distances
 
     # Anchor test = VPD (variation of pairwise distance)
-
-    variance_pairwise_distance <- var(as.vector(Pairwise_dist))
+    # Added the as.dist to avoid doubling the variance.
+    variance_pairwise_distance <- var(as.vector(as.dist(Pairwise_dist)))
 
 
 
@@ -63,7 +64,8 @@ Module_2 <- function(Module_1_output) {
     ## 0c) Phylogenetic isolation
 
     # Using equal.splits method, faster computation
-    Evolutionary_distinctiveness <- evol.distinct2(this_tree, type = "fair.proportion")
+    Evolutionary_distinctiveness <- evol.distinct2(this_tree,
+                                                   type = "fair.proportion")
     cat("-")
     # ED - Summed evolutionary distinctiveness
 
@@ -111,15 +113,15 @@ Module_2 <- function(Module_1_output) {
 
     ## Speciation vs extinction rates and Net diversification dependent on trait
     N.for.dom <- table(this_world[, 6])
-    if(length(N.for.dom) == 2) {
-      par.div.dep <- DivDep( mytree = this_tree, myWorld = this_world)
+    if (length(N.for.dom) == 2) {
+      par.div.dep <- DivDep(mytree = this_tree, myWorld = this_world)
       trait_1_speciation <- par.div.dep[1]
       trait_2_speciation <- par.div.dep[2]
       trait_1_extinction <- par.div.dep[3]
       trait_2_extinction <- par.div.dep[4]
       transition_from_trait_1_to_2 <- par.div.dep[5]
       transition_from_trait_2_to_1 <- par.div.dep[6]
-      transition_rate_ratio_1to2_over_2to1 <- transition_from_trait_1_to_2/transition_from_trait_2_to_1
+      transition_rate_ratio_1to2_over_2to1 <- transition_from_trait_1_to_2 / transition_from_trait_2_to_1
       cat("-")
 
       ## Phylogenetic signal (D)
